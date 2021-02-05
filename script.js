@@ -6,6 +6,7 @@ let input2value;
 let parsedInput1;
 let parsedInput2;
 document.querySelector("button").addEventListener("click", getInput);
+document.querySelector("#clear").addEventListener("click", clearAll);
 getInput();
 
 function getInput() {
@@ -42,5 +43,10 @@ function calculateResult() {
 }
 
 function clearInput2() {
-  document.querySelector("#secondnumber").value = "";
+  document.querySelector("#secondnumber").value = null;
+}
+
+function clearAll() {
+  document.querySelector("#firstnumber").value = null;
+  document.querySelector("#secondnumber").value = null;
 }
