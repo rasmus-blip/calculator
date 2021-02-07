@@ -10,6 +10,11 @@
   gap: .2em;
 }
 
+h1 {
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 #results {
   list-style: none;
   padding: 0;
