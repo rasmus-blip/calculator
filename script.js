@@ -5,8 +5,9 @@ let input1value;
 let input2value;
 let parsedInput1;
 let parsedInput2;
+let result = null;
 document.querySelector("button").addEventListener("click", getInput);
-document.querySelector("#clear").addEventListener("click", clearAll);
+document.querySelector("#clear").addEventListener("click", clearResults);
 getInput();
 
 function getInput() {
@@ -14,39 +15,38 @@ function getInput() {
   input2value = document.querySelector("#secondnumber").value;
   parsedInput1 = parseInt(input1value, 10);
   parsedInput2 = parseInt(input2value, 10);
-
-  console.log(parsedInput1);
-
-  if (input1value === input2value) {
-    console.log("value is truthy");
-  } else {
-    console.log("value is falsy");
-  }
   calculateResult();
 }
 
 function calculateResult() {
   let operator = document.querySelector("#operator").value;
   if (operator === "add") {
-    document.querySelector("#firstnumber").value = parsedInput1 + parsedInput2;
+    result = parsedInput1 + parsedInput2;
   } else if (operator === "sub") {
-    document.querySelector("#firstnumber").value = input1value - input2value;
+    result = input1value - input2value;
   } else if (operator === "mul") {
-    document.querySelector("#firstnumber").value = input1value * input2value;
+    result = input1value * input2value;
   } else {
-    document.querySelector("#firstnumber").value = input1value / input2value;
+    result = input1value / input2value;
   }
-
+  document.querySelector("#firstnumber").value = result;
+  showResults();
   clearInput2();
-
-  console.log("den virker");
 }
 
 function clearInput2() {
   document.querySelector("#secondnumber").value = null;
 }
 
-function clearAll() {
+function showResults() {
+  const container = document.querySelector("#results");
+  const createLi = document.createElement("li");
+  createLi.innerHTML = result;
+  container.appendChild(createLi);
+  container.scrollTo(1, 292929283928932);
+}
+
+function clearResults() {
+  document.querySelector("#results").innerHTML = null;
   document.querySelector("#firstnumber").value = null;
-  document.querySelector("#secondnumber").value = null;
 }
